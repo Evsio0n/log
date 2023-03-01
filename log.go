@@ -2,7 +2,6 @@ package log
 
 import (
 	"fmt"
-	"log/syslog"
 	"runtime"
 	"strconv"
 	"strings"
@@ -11,21 +10,11 @@ import (
 
 var isDEBUG = false
 var isShowDate = false
-var isSyslog = false
-var syslogTag = "syslog"
-var dial *syslog.Writer
+
+// only for syslog available system
+
 var err error
 var isShowLogCatagory = false
-
-func SetSyslog(debug bool, tagName string) error {
-	isSyslog = debug
-	syslogTag = tagName
-	dial, err = syslog.Dial("", "", syslog.LOG_DAEMON, syslogTag)
-	if err != nil {
-		return err
-	}
-	return nil
-}
 
 func SetDebug(debug bool) {
 	isDEBUG = debug
