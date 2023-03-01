@@ -3,17 +3,9 @@
 
 package log
 
-var isSyslog = false
+import "fmt"
 
-func SetSyslog(debug bool, tagName string) error {
-	isSyslog = debug
-	syslogTag = tagName
-	dial, err = syslog.Dial("", "", syslog.LOG_DAEMON, syslogTag)
-	if err != nil {
-		return err
-	}
-	return nil
-}
+var isSyslog = false
 
 func Info(arg ...interface{}) {
 	var s string
