@@ -101,9 +101,10 @@ func (l *Logger) log(level LogLevel, levelStr string, args ...interface{}) {
 
 	l.logWriter.Write(level, message)
 
-	if level == LevelFatal {
+	switch level {
+	case LevelFatal:
 		panic("Fatal error occurred")
-	} else if level == LevelPanic {
+	case LevelPanic:
 		panic(message)
 	}
 }
